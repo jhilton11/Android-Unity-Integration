@@ -133,7 +133,8 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
 
     public void ShowData(String text) {
         Log.d("returned_text", "Received data: " + text);
-
+        ResultTransferListener mListener = (ResultTransferListener) this;
+        mListener.OnResultTransfer(text);
         finish();
     }
 }
