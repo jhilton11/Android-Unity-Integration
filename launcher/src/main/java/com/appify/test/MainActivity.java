@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.unity3d.player.ResultTransferListener;
+import com.unity3d.player.ResultReceiverClass;
+import com.unity3d.player.UnityPlayerActivity;
 
-public class MainActivity extends AppCompatActivity implements ResultTransferListener {
+public class MainActivity extends AppCompatActivity implements ResultReceiverClass.ResultTransferListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
