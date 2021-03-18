@@ -133,9 +133,12 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
 
     public void ShowData(String text) {
         Log.d("returned_text", "Received data: " + text);
-        ResultReceiverClass.ResultTransferListener mListener = (ResultReceiverClass.ResultTransferListener) this;
-        mListener.OnResultTransfer(text);
+        Intent intent = new Intent();
+        intent.putExtra("id", text);
+        setResult(RESULT_OK, intent);
+//        ResultReceiverClass.ResultTransferListener mListener = (ResultReceiverClass.ResultTransferListener) this;
+//        mListener.OnResultTransfer(text);
         finish();
     }
-
+    
 }

@@ -3,12 +3,13 @@ package com.appify.test;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.unity3d.player.ResultReceiverClass;
 import com.unity3d.player.UnityPlayerActivity;
 
-public class MainActivity extends AppCompatActivity implements ResultReceiverClass.ResultTransferListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,7 @@ public class MainActivity extends AppCompatActivity implements ResultReceiverCla
     }
 
     @Override
-    public void OnResultTransfer(String text) {
-        Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("id", text);
-        startActivity(intent);
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
     }
 }
