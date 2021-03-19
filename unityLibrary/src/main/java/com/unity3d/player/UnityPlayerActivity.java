@@ -2,6 +2,7 @@
 package com.unity3d.player;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
@@ -133,12 +134,19 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
 
     public void ShowData(String text) {
         Log.d("returned_text", "Received data: " + text);
-        Intent intent = new Intent();
-        intent.putExtra("id", text);
-        setResult(RESULT_OK, intent);
-//        ResultReceiverClass.ResultTransferListener mListener = (ResultReceiverClass.ResultTransferListener) this;
-//        mListener.OnResultTransfer(text);
-        finish();
+//        ComponentName component = new ComponentName("")
+//        Intent intent = new Intent(this, ResultActivity.class);
+//        intent.putExtra("id", text);
+//        setResult(RESULT_OK, intent);
+        Intent intent = null;
+        try {
+            intent = new Intent(this, Class.forName("com.appify.test.ResultActivity"));
+            intent.putExtra("id", text);
+            startActivity(intent);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
     
 }
