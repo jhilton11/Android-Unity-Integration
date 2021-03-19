@@ -11,6 +11,7 @@ import com.unity3d.player.UnityPlayerActivity;
 import java.util.UUID;
 
 public class MiddleActivity extends AppCompatActivity {
+    boolean isUnityLaunched = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MiddleActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UnityPlayerActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
+        finish();
     }
 
 }

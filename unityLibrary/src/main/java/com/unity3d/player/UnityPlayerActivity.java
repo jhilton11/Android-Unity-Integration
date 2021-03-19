@@ -18,6 +18,7 @@ import android.os.Process;
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents
 {
     protected UnityPlayer mUnityPlayer; // don't change the name of this variable; referenced from native code
+    public static UnityPlayerActivity ua;
 
     // Override this in your custom UnityPlayerActivity to tweak the command line arguments passed to the Unity Android Player
     // The command line arguments are passed as a string, separated by spaces
@@ -43,6 +44,7 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         mUnityPlayer = new UnityPlayer(this, this);
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
+        ua = this;
     }
 
     // When Unity player unloaded move task to background
@@ -143,6 +145,7 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
             intent = new Intent(this, Class.forName("com.appify.test.ResultActivity"));
             intent.putExtra("id", text);
             startActivity(intent);
+            onUnityPlayerQuitted();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
